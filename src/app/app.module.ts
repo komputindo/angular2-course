@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {HeroFormTemplateModule} from "./template/hero-form-template.module";
+import { BookFormComponent } from './book-form/book-form.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BookFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
-    HeroFormTemplateModule
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
