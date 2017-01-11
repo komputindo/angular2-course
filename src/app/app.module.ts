@@ -9,6 +9,8 @@ import { HomeComponent } from './home.component';
 import { HeaderComponent } from './header.component';
 import {routing} from "./routing";
 import {bookRouter} from "./book-form/book-form.router";
+import {heroRouter} from "./hero/hero.router";
+import {HeroModule} from "./hero/hero.module";
 
 @NgModule({
   declarations: [
@@ -19,10 +21,15 @@ import {bookRouter} from "./book-form/book-form.router";
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     routing,
+
     bookRouter,
-     HttpModule,
-    BookFormModule
+    BookFormModule,
+
+    heroRouter,
+    HeroModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
