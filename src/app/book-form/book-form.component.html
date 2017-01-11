@@ -2,7 +2,7 @@
   <h1>
     Book Form
   </h1>
-  <form>
+  <form #bookForm="ngForm">
     <div>
       <label for="title">Title</label>
       <input type="text" class="form-control" id="title" required minlength="5" maxlength="50" [(ngModel)]="model.title" name="title" #title="ngModel">
@@ -10,18 +10,34 @@
         <div [hidden]="!title.errors.required">
           Book Title is Required
         </div>
+        <div [hidden]="!title.errors.minlength">
+          Tittle cannot be least than 5 charackter long
+        </div>
+        <div [hidden]="!title.errors.maxlength">
+          Tittle cannot be more than 30 charackter long
+        </div>
       </div>
     </div>
     <div>
       <label for="author">Author</label>
-      <input type="text" class="form-control" id="author" required [(ngModel)]="model.author" name="author">
+      <input type="text" class="form-control" id="author" required [(ngModel)]="model.author" name="author" name="author" #author="ngModel">
+      <div *ngIf="author.errors && (author.dirty || author.touched) " class="alert alert-danger">
+        <div [hidden]="!author.errors.required">
+          Book Author is Required
+        </div>
+      </div>
     </div>
     <div>
       <label for="url">Url</label>
-      <input type="text" class="form-control" id="url" required [(ngModel)]="model.url" name="url">
+      <input type="text" class="form-control" pattern="https?://.+" id="url" [(ngModel)]="model.url" name="url" #url="ngModel">
+      <div *ngIf="url.errors && (url.dirty || url.touched) " class="alert alert-danger">
+        <div [hidden]="!url.errors.pattern">
+          Mush be valid url
+        </div>
+      </div>
     </div>
     <br>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" [disabled]="!bookForm.form.valid" class="btn btn-primary">Submit</button>
   </form>
 
 
