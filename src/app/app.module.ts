@@ -11,6 +11,8 @@ import {routing} from "./routing";
 import {bookRouter} from "./book-form/book-form.router";
 import {heroRouter} from "./hero/hero.router";
 import {HeroModule} from "./hero/hero.module";
+import {reactiveRouter} from "./reactive/reactive.router";
+import {ReactiveModule} from "./reactive/reactive.module";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,10 @@ import {HeroModule} from "./hero/hero.module";
     BookFormModule,
 
     heroRouter,
-    HeroModule
+    HeroModule,
+
+    reactiveRouter,
+    ReactiveModule
 
   ],
   providers: [],
