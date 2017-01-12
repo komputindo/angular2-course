@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Reactive Form
+  </div>
+  <div class="panel-body">
+    <form novalidate [formGroup]="form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+        <div *ngIf="form.controls.name.errors && form.controls.name.dirty">
+          <!--{{form.controls.name.errors | json }} -->
+          <div *ngIf="form.controls.name.errors.required" class="alert alert-danger">
+            Text Required
+          </div>
+          <div *ngIf="form.controls.name.errors.maxlength" class="alert alert-danger">
+            Karakter Max 30
+          </div>
+          <div *ngIf="form.controls.name.errors.minlength" class="alert alert-danger">
+            Karakter Minimal 5
+          </div>
+
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Addredd</label>
+        <input type="text" class="form-control" id="address" formControlName="address">
+      </div>
+
+      <div formGroupName="contact">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" id="email" formControlName="email">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" class="form-control" id="phone" formControlName="phone">
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+
+  <h3>Model Info</h3>
+    {{ form.value | json }}
+</div>
